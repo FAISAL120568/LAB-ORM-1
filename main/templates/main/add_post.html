@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<form method="post" class="post-form">
+<form method="POST" enctype="multipart/form-data" class="post-form">
     {% csrf_token %}
 
     <label for="title">Title</label>
@@ -19,9 +19,28 @@
     <label for="content">Content</label>
     <textarea id="content" name="content" rows="8" placeholder="Write your post here..." required></textarea>
 
+    <label for="image">Image (optional)</label>
+    <input type="file" id="image" name="image" accept="image/*">
+    <img id="image-preview" class="image-preview" alt="Preview" hidden>
+
     <div class="form-actions">
         <button type="submit" class="btn">Publish</button>
         <a class="btn-link" href="{% url 'main:home' %}">Cancel</a>
     </div>
 </form>
+
+<script>
+  const input = document.getElementById("image");
+  const preview = document.getElementById("image-preview");
+
+  input.addEventListener("change", function () {
+    const file = input.files[0];
+    if (file) {
+      preview.src = URL.createObjectURL(file);
+      preview.hidden = false;
+    } else {
+      preview.hidden = true;
+    }
+  });
+</script>
 {% endblock %}

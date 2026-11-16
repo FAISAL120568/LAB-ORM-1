@@ -272,7 +272,7 @@ main.container {
 }
 
 .btn-delete {
-    background: transparent;
+    background: #fff;
     color: var(--muted);
     border: 1px solid var(--border);
     padding: 6px 14px;
@@ -287,4 +287,94 @@ main.container {
     background: #dc2626;
     border-color: #dc2626;
     color: #fff;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 4px 0 16px;
+}
+
+.post-card h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card h2 a:hover {
+    color: var(--accent);
+}
+
+.detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.detail-actions form {
+    margin: 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.read-more:hover {
+    color: var(--accent-dark);
+}
+
+.post-card .post-image {
+    max-height: 240px;
+}
+
+.post-card .post-image {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.post-card:hover .post-image {
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px var(--shadow);
+}
+
+.detail-card .post-image {
+    max-height: 480px;
+}
+
+.detail-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.detail-card p {
+    font-size: 1.08rem;
+    line-height: 1.9;
+}
+
+.post-card h2,
+.post-card p {
+    overflow-wrap: anywhere;
+}
+
+.image-preview {
+  display: block;
+  max-height: 220px;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.image-preview[hidden] {
+  display: none;
 }
