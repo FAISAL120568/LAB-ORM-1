@@ -2,8 +2,8 @@
     <div class="container nav-wrap">
         <a class="brand" href="{% url 'main:home' %}">Blogger</a>
         <nav>
-            <a href="{% url 'main:home' %}">الرئيسية</a>
-            <a href="{% url 'main:add_post' %}">منشور جديد</a>
+            <a href="{% url 'main:home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+            <a href="{% url 'main:add_post' %}" class="{% if request.resolver_match.url_name == 'add_post' %}active{% endif %}">New Post</a>
         </nav>
     </div>
 </header>

@@ -16,3 +16,9 @@ def add_post_view(request):
         return redirect("main:home")
 
     return render(request, "main/add_post.html")
+
+def delete_post_view(request, post_id):
+    if request.method == "POST":
+        post = Post.objects.get(id=post_id)
+        post.delete()
+    return redirect("main:home")
