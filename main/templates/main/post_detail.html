@@ -5,6 +5,7 @@
 {% block content %}
 <div class="page-head">
     <div>
+        <span class="category-badge">{{ post.get_category_display }}</span>
         <h1>{{ post.title }}</h1>
         <p class="subtitle">{{ post.published_at|date:"M j, Y · h:i A" }}</p>
     </div>

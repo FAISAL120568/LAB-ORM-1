@@ -425,3 +425,31 @@ main.container {
 .view-all:hover {
   text-decoration: underline;
 }
+
+.post-form select {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e8dccf;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.5rem;
+  border-radius: 999px;
+  background: #fff1e6;
+  color: #c2410c;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.search-form select {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #e8dccf;
+  border-radius: 999px;
+  font-size: 1rem;
+  background: #fff;
+}

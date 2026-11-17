@@ -9,9 +9,22 @@
         <p class="total-posts">Total posts: {{ total }}</p>
 
         <form method="GET" class="search-form">
-            <input type="text" name="search" placeholder="Search by title..." value="{{ request.GET.search }}">
-            <button type="submit">Search</button>
-        </form>
+         <input type="text" name="search" placeholder="Search by title..." value="{{ request.GET.search }}">
+
+     <select name="category">
+        <option value="">All categories</option>
+        {% for value, label in categories %}
+        <option value="{{ value }}" {% if request.GET.category == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+     </select>
+
+     <select name="order_by">
+        <option value="">Newest first</option>
+        <option value="oldest" {% if request.GET.order_by == "oldest" %}selected{% endif %}>Oldest first</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
 
         <p class="subtitle">Fresh thoughts, newest first.</p>
     </div>
@@ -25,6 +38,8 @@
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
     </a>
     {% endif %}
+
+        <span class="category-badge">{{ post.get_category_display }}</span>
 
     <h2><a href="{% url 'main:post_detail' post.id %}">{{ post.title }}</a></h2>
 

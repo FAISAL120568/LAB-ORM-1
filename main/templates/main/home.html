@@ -19,6 +19,8 @@
     </a>
     {% endif %}
 
+    <span class="category-badge">{{ post.get_category_display }}</span>
+
     <h2><a href="{% url 'main:post_detail' post.id %}">{{ post.title }}</a></h2>
 
     <p>{{ post.content|truncatechars:150 }}</p>
