@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+{% block title %}All Posts | Blogger{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <div>
+        <h1>All Posts</h1>
+        <p class="total-posts">Total posts: {{ total }}</p>
+
+        <form method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Search by title..." value="{{ request.GET.search }}">
+            <button type="submit">Search</button>
+        </form>
+
+        <p class="subtitle">Fresh thoughts, newest first.</p>
+    </div>
+    <a class="btn" href="{% url 'main:add_post' %}">+ New Post</a>
+</div>
+
+{% for post in posts %}
+<article class="post-card">
+    {% if post.image %}
+    <a href="{% url 'main:post_detail' post.id %}">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+    </a>
+    {% endif %}
+
+    <h2><a href="{% url 'main:post_detail' post.id %}">{{ post.title }}</a></h2>
+
+    <p>{{ post.content|truncatechars:150 }}</p>
+
+    <div class="card-footer">
+        <small>{{ post.published_at|date:"M j, Y · h:i A" }}</small>
+        <a class="read-more" href="{% url 'main:post_detail' post.id %}">Read more →</a>
+    </div>
+
+    <form method="post" action="{% url 'main:delete_post' post.id %}" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-delete">Delete</button>
+    </form>
+</article>
+{% empty %}
+<div class="empty">
+    <p>No posts found.</p>
+    <a class="btn" href="{% url 'main:add_post' %}">Write a post</a>
+</div>
+{% endfor %}
+{% endblock %}

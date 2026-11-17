@@ -3,8 +3,8 @@ from .models import Post
 
 
 def home_view(request):
-    posts = Post.objects.all().order_by("-published_at")
-    return render(request, "main/home.html", {"posts": posts})
+ posts = Post.objects.filter(is_published=True).order_by("-published_at")[0:3]
+ return render(request, "main/home.html", {"posts": posts})
 
 def add_post_view(request):
     if request.method == "POST":
@@ -40,3 +40,13 @@ def update_post_view(request, post_id):
         return redirect("main:post_detail", post_id=post.id)
 
     return render(request, "main/update_post.html", {"post": post})
+
+def all_posts_view(request):
+    posts = Post.objects.filter(is_published=True).order_by("-published_at")
+
+    search = request.GET.get("search")
+    if search:
+        posts = posts.filter(title__contains=search)
+
+    total = posts.count()
+    return render(request, "main/all_posts.html", {"posts": posts, "total": total})

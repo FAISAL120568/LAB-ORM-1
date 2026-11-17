@@ -378,3 +378,50 @@ main.container {
 .image-preview[hidden] {
   display: none;
 }
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #e8dccf;
+  border-radius: 999px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.search-form button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 999px;
+  background: #ea580c;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #c2410c;
+}
+
+.total-posts {
+  color: #7a6a5a;
+  font-weight: 500;
+  margin: 0.5rem 0 0;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #ea580c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}

@@ -9,4 +9,5 @@ urlpatterns = [
     path("post/<int:post_id>/", views.post_detail_view, name="post_detail"),
     path("delete/<int:post_id>/", views.delete_post_view, name="delete_post"),
     path("post/<int:post_id>/edit/", views.update_post_view, name="update_post"),
+    path("all/", views.all_posts_view, name="all_posts"),
 ]
