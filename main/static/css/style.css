@@ -488,3 +488,11 @@ main.container {
   background: #fff1e6;
   color: #c2410c;
 }
+
+a.category-badge {
+  text-decoration: none;
+}
+
+a.category-badge:hover {
+  background: #ffe3cc;
+}

@@ -19,7 +19,8 @@
     </a>
     {% endif %}
 
-    <span class="category-badge">{{ post.get_category_display }}</span>
+    <a class="category-badge" href="{% url 'main:all_posts' %}?category={{ post.category }}">{{ post.get_category_display }}</a>
+
 
     <h2><a href="{% url 'main:post_detail' post.id %}">{{ post.title }}</a></h2>
 
