@@ -1,5 +1,16 @@
 from django.contrib import admin
 from .models import Post, Comment
 
-admin.site.register(Post)
-admin.site.register(Comment)
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ("title", "category", "is_published", "published_at")
+    list_filter = ("category", "is_published")
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("name", "post", "created_at")
+    list_filter = ("post",)
+
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)

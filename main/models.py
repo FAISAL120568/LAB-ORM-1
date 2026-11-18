@@ -13,6 +13,9 @@ class Post(models.Model):
     published_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to="posts/images", blank=True)
     category = models.CharField(max_length=20, choices=Category.choices, default=Category.GENERAL)
+    
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
