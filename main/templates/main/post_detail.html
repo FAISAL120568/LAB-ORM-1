@@ -11,7 +11,8 @@
     </div>
 </div>
 
-<article class="post-card detail-card">    {% if post.image %}
+<article class="post-card detail-card">
+    {% if post.image %}
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
     {% endif %}
     <p>{{ post.content }}</p>
@@ -25,6 +26,27 @@
         <button type="submit" class="btn-delete">Delete</button>
     </form>
 </div>
+
+<section class="comments">
+    <h2>Comments ({{ comments.count }})</h2>
+
+    <form method="POST" action="{% url 'main:add_comment' post.id %}" class="comment-form">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your name" required maxlength="100">
+        <textarea name="content" placeholder="Write a comment..." required minlength="3"></textarea>
+        <button type="submit" class="btn">Send</button>
+    </form>
+
+    {% for comment in comments %}
+        <div class="comment">
+            <strong>{{ comment.name }}</strong>
+            <small>{{ comment.created_at|date:"M j, Y · h:i A" }}</small>
+            <p>{{ comment.content }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+</section>
 
 <a class="btn-link" href="{% url 'main:home' %}">← Back to home</a>
 {% endblock %}

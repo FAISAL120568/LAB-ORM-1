@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm
 
 
@@ -25,7 +25,8 @@ def delete_post_view(request, post_id):
 
 def post_detail_view(request, post_id):
     post = Post.objects.get(id=post_id)
-    return render(request, "main/post_detail.html", {"post": post})
+    comments = Comment.objects.filter(post=post)
+    return render(request, "main/post_detail.html", {"post": post, "comments": comments})
 
 def update_post_view(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -63,3 +64,15 @@ def all_posts_view(request):
         "total": total,
         "categories": Post.Category.choices,
     })
+
+def add_comment_view(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.method == "POST":
+        Comment.objects.create(
+            post=post,
+            name=request.POST["name"],
+            content=request.POST["content"],
+        )
+
+    return redirect("main:post_detail", post_id=post.id)

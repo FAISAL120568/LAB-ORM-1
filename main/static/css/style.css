@@ -496,3 +496,49 @@ a.category-badge {
 a.category-badge:hover {
   background: #ffe3cc;
 }
+
+.comments {
+    margin-top: 2rem;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0 1.5rem;
+}
+
+.comment-form input,
+.comment-form textarea {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #e5ddd5;
+    border-radius: 10px;
+    font: inherit;
+    background: #fff;
+}
+
+.comment-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.comment-form .btn {
+    align-self: flex-start;
+}
+
+.comment {
+    background: #fff;
+    border: 1px solid #eee4da;
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.comment p {
+    margin: 0.3rem 0 0;
+}
+
+.comment small {
+    color: #8a7f75;
+    margin-left: 0.5rem;
+}
