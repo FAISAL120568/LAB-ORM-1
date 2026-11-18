@@ -453,3 +453,38 @@ main.container {
   font-size: 1rem;
   background: #fff;
 }
+
+.post-form select,
+.search-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.65rem 2.5rem 0.65rem 1rem;
+  border: 1px solid #e8dccf;
+  border-radius: 999px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23ea580c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  color: #2b1d14;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.post-form select:focus,
+.search-form select:focus {
+  outline: none;
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+}
+
+.post-form select option,
+.search-form select option {
+  background: #fff;
+  color: #2b1d14;
+}
+
+.post-form select option:checked,
+.search-form select option:checked {
+  background: #fff1e6;
+  color: #c2410c;
+}

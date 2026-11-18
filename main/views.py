@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post
+from .forms import PostForm
 
 
 def home_view(request):
@@ -8,16 +9,13 @@ def home_view(request):
 
 def add_post_view(request):
     if request.method == "POST":
-        post = Post(
-            title=request.POST["title"],
-            content=request.POST["content"],
-            category=request.POST["category"],
-            image=request.FILES.get("image"),
-        )
-        post.save()
-        return redirect("main:home")
+        post_form = PostForm(request.POST, request.FILES)
+        if post_form.is_valid():
+            post_form.save()
+            return redirect("main:home")
 
     return render(request, "main/add_post.html", {"categories": Post.Category.choices})
+
 
 def delete_post_view(request, post_id):
     if request.method == "POST":
